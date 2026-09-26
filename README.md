@@ -1,12 +1,11 @@
-## Hi # Hi, I'm Malik Olukotun 👋
+# Hi, I'm Malik Olukotun 👋
 
 I am a Computer Science undergraduate building software systems and exploring the underlying mechanics of intelligence—spanning artificial neural networks, biological cognition, and scalable open-source architectures.
 
 ---
 
 ### 🔭 Current Focus
-- **Systems & AI:** Machine learning foundations, neural net mechanics, and localized speech synthesis models (**Wazobia.ai**).
-- **Open Source:** Leading **OpenSource HQ**, a digital network driving public proof-of-work, algorithmic problem-solving, and global opportunity pipelines.
+- **Systems & AI:** Machine learning foundations, neural net mechanics, and localized speech synthesis models
 - **Cognitive Engineering:** Structuring high-yield learning frameworks and memory models for complex computer science topics.
 
 ---
@@ -14,6 +13,7 @@ I am a Computer Science undergraduate building software systems and exploring th
 ### 🛠️ Tech Stack & Tooling
 
 **Languages & Web Systems**
+![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
@@ -23,11 +23,8 @@ I am a Computer Science undergraduate building software systems and exploring th
 **Tools & Environment**
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
 
 ---
-
-
 
 ### 📬 Connect with Me
 
