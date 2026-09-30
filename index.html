@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Malik Olukotun — Computer Science @ OOU. Notes, research interests, blog posts, videos, and future papers." />
+  <meta name="author" content="Malik Olukotun" />
+  <meta name="theme-color" content="#111111" />
+
+  <title>Malik Olukotun</title>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f7f7f7;
+      --text: #111111;
+      --text-secondary: #555555;
+      --border: #e5e5e5;
+      --link: #0f62fe;
+      --link-hover: #0846b8;
+      --max-width: 760px;
+      --code-bg: #f3f3f3;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0d0d0d;
+      --bg-secondary: #161616;
+      --text: #f5f5f5;
+      --text-secondary: #b3b3b3;
+      --border: #2a2a2a;
+      --link: #7db4ff;
+      --link-hover: #a5cbff;
+      --code-bg: #1b1b1b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        "Inter",
+        "SF Pro Text",
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.65;
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--bg-secondary);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-weight: 750;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+    }
+
+    .intro {
+      margin-top: 20px;
+      font-size: 1.03rem;
+      color: var(--text);
+    }
+
+    .links {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      font-size: 0.95rem;
+    }
+
+    .links a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 38px 0;
+    }
+
+    section {
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin: 0 0 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 18px 0 8px;
+      font-weight: 650;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    .muted {
+      color: var(--text-secondary);
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .coming-soon {
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+
+    .footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    .math-friendly {
+      font-family:
+        "STIX Two Text",
+        "Cambria Math",
+        "Latin Modern Roman",
+        Georgia,
+        serif;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px 18px 60px;
+      }
+
+      .links {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <div class="topbar">
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        Toggle Theme
+      </button>
+    </div>
+
+    <header>
+      <h1>Malik Olukotun</h1>
+      <div class="subtitle">Computer Science @ OOU</div>
+
+      <p class="intro">
+        Undergraduate studying Computer Science at OOU. Building a
+        first-principles foundation across Mathematics, Computer Science
+        (AI &amp; Neural Networks), Neuroscience, and Engineering.
+      </p>
+
+      <div class="links">
+        <a href="mailto:abdulmalikolukotun@gmail.com">Email</a>
+        <a href="https://github.com/malikolukotun" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/malikolukotun" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.linkedin.com/in/malikolukotun" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://malikolukotun.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
+        <a href="https://dev.to/malikolukotun" target="_blank" rel="noopener noreferrer">Dev.to</a>
+        <a href="https://huggingface.co/malikolukotun" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+      </div>
+    </header>
+
+    <hr />
+
+    <section id="videos">
+      <h2>Video Playlists &amp; Visual Notes</h2>
+
+      <div class="card">
+        <h3>Track 1: Mathematics &amp; AI Fundamentals</h3>
+        <p>
+          First-principles video breakdowns on linear algebra, calculus,
+          and neural network mechanics.
+        </p>
+        <p class="coming-soon">
+          YouTube Playlist — Coming soon
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Track 2: Algorithms &amp; Systems</h3>
+        <p>
+          Implementation walkthroughs, data structure derivations,
+          and computational mechanics.
+        </p>
+        <p class="coming-soon">
+          YouTube Playlist — Coming soon
+        </p>
+      </div>
+    </section>
+
+    <section id="writing">
+      <h2>Blog &amp; Expository Writing</h2>
+
+      <div class="card">
+        <h3>Substack Essays</h3>
+        <p>
+          In-depth research articles on mathematics, neural networks,
+          computation, and scientific thinking.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Dev.to Technical Notes</h3>
+        <p>
+          Direct technical breakdowns, active recall notes,
+          implementation walkthroughs, and algorithmic explorations.
+        </p>
+      </div>
+    </section>
+
+    <section id="papers">
+      <h2>Papers &amp; Preprints</h2>
+
+      <div class="card">
+        <p>
+          No preprints published yet. Future research papers,
+          expository drafts, and PDF notes will be indexed directly here.
+        </p>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Collaborations &amp; Research</h2>
+
+      <div class="card">
+        <p>
+          Open to research discussions and collaborations in mathematical
+          physics, neural network architectures, and computational modeling.
+          Reach out via email or LinkedIn.
+        </p>
+      </div>
+    </section>
+
+    <section id="interests">
+      <h2>Research Areas</h2>
+
+      <p class="math-friendly">
+        Current long-term interests include:
+      </p>
+
+      <ul>
+        <li>Artificial Intelligence &amp; Neural Networks</li>
+        <li>Machine Learning Theory</li>
+        <li>Mathematics for Computation</li>
+        <li>Computational Neuroscience</li>
+        <li>Algorithms &amp; Data Structures</li>
+        <li>Scientific Computing</li>
+        <li>Mathematical Physics</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Malik Olukotun.
+    
+    </div>
+
+  </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggleBtn = document.getElementById("themeToggle");
+
+      function getPreferredTheme() {
+        const stored = localStorage.getItem("theme");
+
+        if (stored) {
+          return stored;
+        }
+
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        toggleBtn.textContent =
+          theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode";
+      }
+
+      applyTheme(getPreferredTheme());
+
+      toggleBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        applyTheme(current === "dark" ? "light" : "dark");
+      });
+
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
