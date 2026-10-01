@@ -1,382 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Malik Olukotun — Computer Science @ OOU. Notes, research interests, blog posts, videos, and future papers." />
-  <meta name="author" content="Malik Olukotun" />
-  <meta name="theme-color" content="#111111" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malik Olukotun — Mathematics, AI & the Brain</title>
+<meta name="description" content="Malik Olukotun is an undergraduate computer science student at OOU building a first-principles foundation across mathematics, AI, neuroscience, and engineering.">
+<meta property="og:title" content="Malik Olukotun">
+<meta property="og:description" content="Mathematics, AI & neuroscience — from first principles. Notes, projects, and writing.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --text: #1a1a1a;
+    --text-2: #444;
+    --text-3: #777;
+    --text-4: #aaa;
+    --border: #e3e3e3;
+    --muted: #f6f6f6;
+    --maxw: 720px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.5;
+  }
+  a { color: inherit; }
+  .site { max-width: var(--maxw); margin: 0 auto; padding: 32px 20px 64px; }
 
-  <title>Malik Olukotun</title>
+  /* ---------- header ---------- */
+  .sitehead { padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .sitehead .nm { font-size: 22px; font-weight: 600; letter-spacing: 0; }
+  .sitehead .rl { font-size: 15px; color: var(--text-3); margin-top: 2px; }
+  .nav { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 12px; }
+  .nav a {
+    font-size: 14px; color: var(--text-2); text-decoration: none;
+    padding: 4px 10px; border-radius: 6px; transition: color .15s, background .15s;
+  }
+  .nav a:hover { color: var(--text); background: var(--muted); }
+  .nav a.on { color: var(--text); background: var(--muted); font-weight: 500; }
 
-  <style>
-    :root {
-      --bg: #ffffff;
-      --bg-secondary: #f7f7f7;
-      --text: #111111;
-      --text-secondary: #555555;
-      --border: #e5e5e5;
-      --link: #0f62fe;
-      --link-hover: #0846b8;
-      --max-width: 760px;
-      --code-bg: #f3f3f3;
-    }
+  .modes { display: flex; justify-content: center; margin: 16px 0 0; }
+  .modes .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .modes button {
+    border: none; background: transparent; color: var(--text-3);
+    font-size: 13px; padding: 6px 14px; cursor: pointer; font-family: inherit;
+    transition: background .15s, color .15s;
+  }
+  .modes button.on { background: var(--muted); color: var(--text); font-weight: 500; }
 
-    [data-theme="dark"] {
-      --bg: #0d0d0d;
-      --bg-secondary: #161616;
-      --text: #f5f5f5;
-      --text-secondary: #b3b3b3;
-      --border: #2a2a2a;
-      --link: #7db4ff;
-      --link-hover: #a5cbff;
-      --code-bg: #1b1b1b;
-    }
+  /* ---------- sections ---------- */
+  .wrap { display: flex; flex-direction: column; }
+  .wrap.about-first #about { order: -1; }
+  section { padding: 28px 0 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 12px; }
+  section:last-child { border-bottom: none; }
+  h2.sec { font-size: 18px; font-weight: 600; margin: 0 0 16px; }
 
-    * {
-      box-sizing: border-box;
-    }
+  /* ---------- about ---------- */
+  .aboutrow { display: flex; gap: 20px; align-items: flex-start; }
+  .photo {
+    width: 96px; height: 96px; border-radius: 12px; object-fit: cover;
+    background: var(--muted); border: 1px solid var(--border); flex-shrink: 0;
+  }
+  .bio { font-size: 15px; line-height: 24px; color: var(--text-2); }
+  .bio b { font-weight: 600; color: var(--text); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .chip {
+    font-size: 12px; color: var(--text-2);
+    border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px;
+  }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  /* ---------- timeline ---------- */
+  .tl { display: flex; gap: 16px; }
+  .tlyr { width: 76px; flex-shrink: 0; font-size: 14px; color: var(--text-3); font-variant-numeric: tabular-nums; padding-top: 1px; }
+  .tlbody { border-left: 1px solid var(--border); padding-left: 16px; padding-bottom: 20px; }
+  .tlbody:last-child { padding-bottom: 4px; }
+  .tlt { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .tld { font-size: 14px; line-height: 22px; color: var(--text-2); }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family:
-        "Inter",
-        "SF Pro Text",
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-      line-height: 1.65;
-      transition:
-        background-color 0.25s ease,
-        color 0.25s ease;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
+  /* ---------- notes ---------- */
+  .note { padding: 16px 0 20px; border-bottom: 1px solid var(--border); }
+  .note:last-child { border-bottom: none; }
+  .ndate { font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+  .ntitle { font-size: 17px; font-weight: 600; margin: 4px 0 8px; }
+  .ntitle a { text-decoration: none; }
+  .ntitle a:hover { text-decoration: underline; }
+  .nbody { font-size: 15px; line-height: 24px; color: var(--text-2); }
+  .nbody code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; background: var(--muted); border-radius: 4px; padding: 1px 5px;
+  }
+  .more { display: none; margin-top: 12px; }
+  .note.open .more { display: block; }
+  .readrest { margin-top: 8px; }
+  .readrest button {
+    border: none; background: none; padding: 0; font-size: 14px; color: var(--text);
+    cursor: pointer; text-decoration: underline; text-underline-offset: 3px; font-family: inherit;
+  }
+  .notefoot { font-size: 12px; color: var(--text-4); margin-top: 8px; }
 
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 32px 20px 80px;
-    }
+  /* ---------- projects ---------- */
+  .proj { display: flex; gap: 16px; padding: 12px 0; }
+  .thumb {
+    width: 72px; height: 72px; border-radius: 10px; object-fit: cover;
+    background: var(--muted); border: 1px solid var(--border); flex-shrink: 0;
+  }
+  .pt { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .pt a { text-decoration: none; }
+  .pt a:hover { text-decoration: underline; }
+  .pd { font-size: 14px; line-height: 22px; color: var(--text-2); }
 
-    .topbar {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      margin-bottom: 24px;
-    }
+  /* ---------- papers ---------- */
+  .pap { padding: 8px 0; }
+  .pap .y { font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+  .pap .t { font-size: 15px; margin: 2px 0; }
+  .pap .t a { text-decoration: none; }
+  .pap .t a:hover { text-decoration: underline; }
+  .pap .a { font-size: 13px; color: var(--text-3); }
+  .empty { font-size: 14px; color: var(--text-3); font-style: italic; margin-bottom: 8px; }
 
-    .theme-toggle {
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      border-radius: 8px;
-      padding: 8px 12px;
-      cursor: pointer;
-      font-size: 0.92rem;
-      transition: all 0.2s ease;
-    }
+  /* ---------- contact ---------- */
+  .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .links a { font-size: 14px; color: var(--text-2); text-decoration: none; }
+  .links a:hover { color: var(--text); text-decoration: underline; }
 
-    .theme-toggle:hover {
-      background: var(--bg-secondary);
-    }
+  footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-4); }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      font-weight: 750;
-    }
-
-    .subtitle {
-      margin-top: 6px;
-      color: var(--text-secondary);
-      font-size: 1.02rem;
-    }
-
-    .intro {
-      margin-top: 20px;
-      font-size: 1.03rem;
-      color: var(--text);
-    }
-
-    .links {
-      margin-top: 22px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 16px;
-      font-size: 0.95rem;
-    }
-
-    .links a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    .links a:hover {
-      color: var(--link-hover);
-      text-decoration: underline;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 38px 0;
-    }
-
-    section {
-      margin-bottom: 42px;
-    }
-
-    h2 {
-      font-size: 1.3rem;
-      margin: 0 0 16px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    h3 {
-      font-size: 1rem;
-      margin: 18px 0 8px;
-      font-weight: 650;
-    }
-
-    p {
-      margin: 0 0 12px;
-      color: var(--text);
-    }
-
-    .muted {
-      color: var(--text-secondary);
-    }
-
-    .card {
-      border: 1px solid var(--border);
-      background: var(--bg);
-      border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 14px;
-    }
-
-    .card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .coming-soon {
-      color: var(--text-secondary);
-      font-style: italic;
-    }
-
-    code {
-      background: var(--code-bg);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.92em;
-    }
-
-    .footer {
-      margin-top: 48px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-size: 0.92rem;
-    }
-
-    .math-friendly {
-      font-family:
-        "STIX Two Text",
-        "Cambria Math",
-        "Latin Modern Roman",
-        Georgia,
-        serif;
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        padding: 24px 18px 60px;
-      }
-
-      .links {
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      h2 {
-        font-size: 1.2rem;
-      }
-    }
-  </style>
+  @media (max-width: 560px) {
+    .aboutrow { flex-direction: column; }
+    .tlyr { width: 60px; }
+  }
+</style>
 </head>
 <body>
-  <main class="container">
+<div class="site">
 
-    <div class="topbar">
-      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-        Toggle Theme
-      </button>
+  <div class="sitehead">
+    <div class="nm">Malik Olukotun</div>
+    <div class="rl">computer science @ OOU — mathematics, AI &amp; the brain</div>
+    <nav class="nav" id="nav">
+      <a href="#notes" data-s="notes" class="on">notes</a>
+      <a href="#about" data-s="about">about</a>
+      <a href="#timeline" data-s="timeline">timeline</a>
+      <a href="#projects" data-s="projects">projects</a>
+      <a href="#papers" data-s="papers">papers</a>
+      <a href="#contact" data-s="contact">contact</a>
+    </nav>
+  </div>
+
+  <div class="modes">
+    <div class="seg" role="tablist" aria-label="layout mode">
+      <button id="mNotes" class="on" onclick="setMode('notes')">notes first</button>
+      <button id="mAbout" onclick="setMode('about')">bio first</button>
     </div>
+  </div>
 
-    <header>
-      <h1>Malik Olukotun</h1>
-      <div class="subtitle">Computer Science @ OOU</div>
+  <div class="wrap" id="wrap">
 
-      <p class="intro">
-        Undergraduate studying Computer Science at OOU. Building a
-        first-principles foundation across Mathematics, Computer Science
-        (AI &amp; Neural Networks), Neuroscience, and Engineering.
-      </p>
+    <!-- ================= NOTES (blog feed) =================
+         To add a post: copy a <article class="note">…</article> block,
+         newest first. Put the excerpt in the first .nbody and the full
+         text in the .more paragraph. -->
+    <section id="notes">
+      <h2 class="sec">what's new</h2>
 
-      <div class="links">
-        <a href="mailto:abdulmalikolukotun@gmail.com">Email</a>
-        <a href="https://github.com/malikolukotun" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://x.com/malikolukotun" target="_blank" rel="noopener noreferrer">X</a>
-        <a href="https://www.linkedin.com/in/malikolukotun" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://malikolukotun.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
-        <a href="https://dev.to/malikolukotun" target="_blank" rel="noopener noreferrer">Dev.to</a>
-        <a href="https://huggingface.co/malikolukotun" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+      <article class="note">
+        <div class="ndate">September 21, 2026 · expository</div>
+        <h3 class="ntitle"><a href="#notes">Deriving backpropagation by hand, then coding it</a></h3>
+        <p class="nbody">Most introductions to backpropagation gesture at the chain rule and then hand you <code>loss.backward()</code>. This note does the opposite: we compute the gradient of a tiny two-layer network symbolically, watch every partial derivative land where it should, and only then write a ~100-line autograd engine that reproduces them numerically.</p>
+        <p class="nbody more">The key realization is that backpropagation is not an algorithm for "training networks" — it is an algorithm for reusing intermediate results of the chain rule. Once you see the computational graph as the object the math is happening on, the engine writes itself: each node stores how to compute its local derivative, and a single reverse topological pass accumulates them. I end with a checklist of the three places beginners usually lose the factor ordering. <a href="https://dev.to/malikolukotun" target="_blank" rel="noopener">Full version on Dev.to →</a></p>
+        <div class="readrest"><button onclick="toggleNote(this)">Read the rest of this entry »</button></div>
+      </article>
+
+      <article class="note">
+        <div class="ndate">September 4, 2026 · mathematics</div>
+        <h3 class="ntitle"><a href="#notes">Linear algebra is the grammar of neural networks</a></h3>
+        <p class="nbody">A matrix multiplication is usually taught as a formula to memorize. It is better understood as the grammar of a sentence: <code>W x</code> says "measure x along the directions that matter to W." This note collects the four or five interpretations of a matrix that keep recurring across machine learning.</p>
+        <p class="nbody more">We walk through: (1) a matrix as a list of dot-product probes, (2) as a change of basis, (3) as a geometric transformation (rotate, stretch, shear), and (4) as a low-rank compression of a huge table of associations. The punchline for neural networks: training is nothing but nudging the grammar so that the sentences it produces score better. <a href="https://malikolukotun.substack.com" target="_blank" rel="noopener">Full version on Substack →</a></p>
+        <div class="readrest"><button onclick="toggleNote(this)">Read the rest of this entry »</button></div>
+      </article>
+
+      <article class="note">
+        <div class="ndate">August 18, 2026 · computation</div>
+        <h3 class="ntitle"><a href="#notes">What Turing actually proved (and what he didn't)</a></h3>
+        <p class="nbody">The halting problem is often summarized as "computers can't solve everything." True, but the shape of the proof matters more than the slogan: Turing showed that a single self-referential construction — feed a machine its own description — collapses any would-be decider. The same diagonal trick shows up in Gödel, Cantor, and Rice's theorem.</p>
+        <p class="nbody more">This note traces the diagonal argument across all four results and argues they are one idea wearing different clothes. The payoff is practical: recognizing the pattern tells you immediately which questions about programs are hopeless in general, and where the escape hatches (decidable fragments, approximation, verification of restricted systems) actually live.</p>
+        <div class="readrest"><button onclick="toggleNote(this)">Read the rest of this entry »</button></div>
+      </article>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about">
+      <h2 class="sec">about</h2>
+      <div class="aboutrow">
+        <!-- Drop a photo.jpg next to index.html, or replace the src with any image URL -->
+        <img class="photo" src="photo.jpg" alt="Malik Olukotun" onerror="this.style.visibility='hidden'">
+        <p class="bio"><b>Malik Olukotun</b> is an undergraduate studying computer science at Olabisi Onabanjo University. He is building a first-principles foundation across mathematics, computer science (AI and neural networks), neuroscience, and engineering — and writing up what he learns along the way, both as video walkthroughs and long-form notes.</p>
       </div>
-    </header>
-
-    <hr />
-
-    <section id="videos">
-      <h2>Video Playlists &amp; Visual Notes</h2>
-
-      <div class="card">
-        <h3>Track 1: Mathematics &amp; AI Fundamentals</h3>
-        <p>
-          First-principles video breakdowns on linear algebra, calculus,
-          and neural network mechanics.
-        </p>
-        <p class="coming-soon">
-          YouTube Playlist — Coming soon
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Track 2: Algorithms &amp; Systems</h3>
-        <p>
-          Implementation walkthroughs, data structure derivations,
-          and computational mechanics.
-        </p>
-        <p class="coming-soon">
-          YouTube Playlist — Coming soon
-        </p>
+      <div class="chips">
+        <span class="chip">artificial intelligence &amp; neural networks</span>
+        <span class="chip">machine learning theory</span>
+        <span class="chip">mathematics for computation</span>
+        <span class="chip">computational neuroscience</span>
+        <span class="chip">algorithms &amp; data structures</span>
+        <span class="chip">scientific computing</span>
+        <span class="chip">mathematical physics</span>
       </div>
     </section>
 
-    <section id="writing">
-      <h2>Blog &amp; Expository Writing</h2>
-
-      <div class="card">
-        <h3>Substack Essays</h3>
-        <p>
-          In-depth research articles on mathematics, neural networks,
-          computation, and scientific thinking.
-        </p>
+    <!-- ================= TIMELINE ================= -->
+    <section id="timeline">
+      <h2 class="sec">timeline</h2>
+      <div class="tl">
+        <div class="tlyr">2025 –</div>
+        <div class="tlbody">
+          <p class="tlt">BSc computer science, Olabisi Onabanjo University</p>
+          <p class="tld">Coursework alongside a self-directed first-principles track: linear algebra and calculus, then neural network mechanics implemented from scratch rather than imported from a library.</p>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>Dev.to Technical Notes</h3>
-        <p>
-          Direct technical breakdowns, active recall notes,
-          implementation walkthroughs, and algorithmic explorations.
-        </p>
+      <div class="tl">
+        <div class="tlyr">2024 –</div>
+        <div class="tlbody">
+          <p class="tlt">Started the public learning log</p>
+          <p class="tld">Began recording video breakdowns of mathematics and AI fundamentals, and writing companion essays — the habit that turned into this site's notes feed.</p>
+        </div>
       </div>
     </section>
 
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects">
+      <h2 class="sec">projects</h2>
+
+      <div class="proj">
+        <img class="thumb" src="" alt="" onerror="this.style.visibility='hidden'">
+        <div>
+          <p class="pt"><a href="https://github.com/malikolukotun" target="_blank" rel="noopener">tinygrad-from-scratch</a></p>
+          <p class="pd">A scalar-valued autograd engine with a PyTorch-like API, built to accompany the backpropagation note. Implements reverse-mode autodiff over a dynamically built graph.</p>
+        </div>
+      </div>
+
+      <div class="proj">
+        <img class="thumb" src="" alt="" onerror="this.style.visibility='hidden'">
+        <div>
+          <p class="pt"><a href="https://github.com/malikolukotun" target="_blank" rel="noopener">algorithm visualizer</a></p>
+          <p class="pd">Sorting and graph algorithms rendered step-by-step in the browser, used as visuals for the "algorithms &amp; systems" video track.</p>
+        </div>
+      </div>
+
+      <div class="proj">
+        <img class="thumb" src="" alt="" onerror="this.style.visibility='hidden'">
+        <div>
+          <p class="pt"><a href="https://github.com/malikolukotun" target="_blank" rel="noopener">spiking neuron playground</a></p>
+          <p class="pd">A small leaky integrate-and-fire simulation to build intuition for computational neuroscience before touching spiking neural network frameworks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PAPERS ================= -->
     <section id="papers">
-      <h2>Papers &amp; Preprints</h2>
-
-      <div class="card">
-        <p>
-          No preprints published yet. Future research papers,
-          expository drafts, and PDF notes will be indexed directly here.
-        </p>
+      <h2 class="sec">papers &amp; preprints</h2>
+      <p class="empty">No preprints published yet. Expository drafts and PDF notes live here as they're written.</p>
+      <div class="pap">
+        <div class="y">expository note · 2026</div>
+        <div class="t"><a href="#notes">Deriving backpropagation by hand, then coding it</a></div>
+        <div class="a">M. Olukotun — PDF</div>
+      </div>
+      <div class="pap">
+        <div class="y">expository note · 2026</div>
+        <div class="t"><a href="#notes">Linear algebra is the grammar of neural networks</a></div>
+        <div class="a">M. Olukotun — PDF</div>
       </div>
     </section>
 
-    <section id="research">
-      <h2>Collaborations &amp; Research</h2>
-
-      <div class="card">
-        <p>
-          Open to research discussions and collaborations in mathematical
-          physics, neural network architectures, and computational modeling.
-          Reach out via email or LinkedIn.
-        </p>
+    <!-- ================= CONTACT ================= -->
+    <section id="contact">
+      <h2 class="sec">contact</h2>
+      <p class="bio" style="margin-bottom:12px">Open to research discussions and collaborations in mathematical physics, neural network architectures, and computational modeling.</p>
+      <div class="links">
+        <a href="mailto:abdulmalikolukotun@gmail.com">email</a>
+        <a href="https://github.com/malikolukotun" target="_blank" rel="noopener">github</a>
+        <a href="https://www.linkedin.com/in/malikolukotun" target="_blank" rel="noopener">linkedin</a>
+        <a href="https://www.youtube.com/@MalikOlukotun" target="_blank" rel="noopener">youtube</a>
+        <a href="https://malikolukotun.substack.com" target="_blank" rel="noopener">substack</a>
+        <a href="https://dev.to/malikolukotun" target="_blank" rel="noopener">dev.to</a>
       </div>
     </section>
 
-    <section id="interests">
-      <h2>Research Areas</h2>
+  </div>
 
-      <p class="math-friendly">
-        Current long-term interests include:
-      </p>
+  <footer>© 2026 Malik Olukotun · built by hand, no frameworks</footer>
+</div>
 
-      <ul>
-        <li>Artificial Intelligence &amp; Neural Networks</li>
-        <li>Machine Learning Theory</li>
-        <li>Mathematics for Computation</li>
-        <li>Computational Neuroscience</li>
-        <li>Algorithms &amp; Data Structures</li>
-        <li>Scientific Computing</li>
-        <li>Mathematical Physics</li>
-      </ul>
-    </section>
+<script>
+  function toggleNote(btn) {
+    var note = btn.closest('.note');
+    note.classList.toggle('open');
+    btn.textContent = note.classList.contains('open') ? '« Collapse this entry' : 'Read the rest of this entry »';
+  }
+  function setMode(m) {
+    document.getElementById('wrap').classList.toggle('about-first', m === 'about');
+    document.getElementById('mNotes').classList.toggle('on', m === 'notes');
+    document.getElementById('mAbout').classList.toggle('on', m === 'about');
+    try { localStorage.setItem('layout-mode', m); } catch (e) {}
+  }
+  try {
+    var saved = localStorage.getItem('layout-mode');
+    if (saved === 'about') setMode('about');
+  } catch (e) {}
 
-    <div class="footer">
-      © <span id="year"></span> Malik Olukotun.
-    
-    </div>
-
-  </main>
-
-  <script>
-    (function () {
-      const root = document.documentElement;
-      const toggleBtn = document.getElementById("themeToggle");
-
-      function getPreferredTheme() {
-        const stored = localStorage.getItem("theme");
-
-        if (stored) {
-          return stored;
+  // active nav highlighting
+  var links = document.querySelectorAll('#nav a');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          links.forEach(function(l) { l.classList.toggle('on', l.dataset.s === e.target.id); });
         }
-
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      }
-
-      function applyTheme(theme) {
-        root.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-
-        toggleBtn.textContent =
-          theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode";
-      }
-
-      applyTheme(getPreferredTheme());
-
-      toggleBtn.addEventListener("click", () => {
-        const current = root.getAttribute("data-theme");
-        applyTheme(current === "dark" ? "light" : "dark");
       });
-
-      document.getElementById("year").textContent =
-        new Date().getFullYear();
-    })();
-  </script>
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    document.querySelectorAll('section').forEach(function(s) { obs.observe(s); });
+  }
+</script>
 </body>
 </html>
