@@ -1,190 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malik Olukotun — Mathematics, AI & the Brain</title>
-<meta name="description" content="Malik Olukotun is an undergraduate computer science student at OOU building a first-principles foundation across mathematics, AI, neuroscience, and engineering.">
-<meta property="og:title" content="Malik Olukotun">
-<meta property="og:description" content="Mathematics, AI & neuroscience — from first principles. Notes, projects, and writing.">
-<meta property="og:type" content="website">
-<style>
-  :root {
-    --text: #1a1a1a;
-    --text-2: #444;
-    --text-3: #777;
-    --text-4: #aaa;
-    --border: #e3e3e3;
-    --muted: #f6f6f6;
-    --maxw: 720px;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--text);
-    background: #fff;
-    line-height: 1.5;
-  }
-  a { color: inherit; }
-  .site { max-width: var(--maxw); margin: 0 auto; padding: 32px 20px 64px; }
+<title>Malik Olukotun</title><style>
+body{
+    max-width:700px;
+    margin:40px auto;
+    padding:0 20px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size:16px;
+    line-height:1.6;
+    color:#111;
+    background:#fff;
+}
 
-  /* ---------- header ---------- */
-  .sitehead { padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-  .sitehead .nm { font-size: 22px; font-weight: 600; letter-spacing: 0; }
-  .sitehead .rl { font-size: 15px; color: var(--text-3); margin-top: 2px; }
-  .nav { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 12px; }
-  .nav a {
-    font-size: 14px; color: var(--text-2); text-decoration: none;
-    padding: 4px 10px; border-radius: 6px; transition: color .15s, background .15s;
-  }
-  .nav a:hover { color: var(--text); background: var(--muted); }
-  .nav a.on { color: var(--text); background: var(--muted); font-weight: 500; }
+h1{
+    font-size:28px;
+    font-weight:normal;
+    margin-bottom:4px;
+}
 
-  .modes { display: flex; justify-content: center; margin: 16px 0 0; }
-  .modes .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .modes button {
-    border: none; background: transparent; color: var(--text-3);
-    font-size: 13px; padding: 6px 14px; cursor: pointer; font-family: inherit;
-    transition: background .15s, color .15s;
-  }
-  .modes button.on { background: var(--muted); color: var(--text); font-weight: 500; }
+.subtitle{
+    color:#555;
+    margin-bottom:24px;
+}
 
-  /* ---------- sections ---------- */
-  .wrap { display: flex; flex-direction: column; }
-  .wrap.about-first #about { order: -1; }
-  section { padding: 28px 0 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 12px; }
-  section:last-child { border-bottom: none; }
-  h2.sec { font-size: 18px; font-weight: 600; margin: 0 0 16px; }
+nav{
+    margin-bottom:32px;
+}
 
-  /* ---------- about ---------- */
-  .aboutrow { display: flex; gap: 20px; align-items: flex-start; }
-  .photo {
-    width: 96px; height: 96px; border-radius: 12px; object-fit: cover;
-    background: var(--muted); border: 1px solid var(--border); flex-shrink: 0;
-  }
-  .bio { font-size: 15px; line-height: 24px; color: var(--text-2); }
-  .bio b { font-weight: 600; color: var(--text); }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-  .chip {
-    font-size: 12px; color: var(--text-2);
-    border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px;
-  }
+nav a{
+    margin-right:16px;
+}
 
-  /* ---------- timeline ---------- */
-  .tl { display: flex; gap: 16px; }
-  .tlyr { width: 76px; flex-shrink: 0; font-size: 14px; color: var(--text-3); font-variant-numeric: tabular-nums; padding-top: 1px; }
-  .tlbody { border-left: 1px solid var(--border); padding-left: 16px; padding-bottom: 20px; }
-  .tlbody:last-child { padding-bottom: 4px; }
-  .tlt { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .tld { font-size: 14px; line-height: 22px; color: var(--text-2); }
+a{
+    color:#0000EE;
+}
 
-  /* ---------- notes ---------- */
-  .note { padding: 16px 0 20px; border-bottom: 1px solid var(--border); }
-  .note:last-child { border-bottom: none; }
-  .ndate { font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
-  .ntitle { font-size: 17px; font-weight: 600; margin: 4px 0 8px; }
-  .ntitle a { text-decoration: none; }
-  .ntitle a:hover { text-decoration: underline; }
-  .nbody { font-size: 15px; line-height: 24px; color: var(--text-2); }
-  .nbody code {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 13px; background: var(--muted); border-radius: 4px; padding: 1px 5px;
-  }
-  .more { display: none; margin-top: 12px; }
-  .note.open .more { display: block; }
-  .readrest { margin-top: 8px; }
-  .readrest button {
-    border: none; background: none; padding: 0; font-size: 14px; color: var(--text);
-    cursor: pointer; text-decoration: underline; text-underline-offset: 3px; font-family: inherit;
-  }
-  .notefoot { font-size: 12px; color: var(--text-4); margin-top: 8px; }
+a:visited{
+    color:#551A8B;
+}
 
-  /* ---------- projects ---------- */
-  .proj { display: flex; gap: 16px; padding: 12px 0; }
-  .thumb {
-    width: 72px; height: 72px; border-radius: 10px; object-fit: cover;
-    background: var(--muted); border: 1px solid var(--border); flex-shrink: 0;
-  }
-  .pt { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .pt a { text-decoration: none; }
-  .pt a:hover { text-decoration: underline; }
-  .pd { font-size: 14px; line-height: 22px; color: var(--text-2); }
+section{
+    margin-bottom:40px;
+}
 
-  /* ---------- papers ---------- */
-  .pap { padding: 8px 0; }
-  .pap .y { font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
-  .pap .t { font-size: 15px; margin: 2px 0; }
-  .pap .t a { text-decoration: none; }
-  .pap .t a:hover { text-decoration: underline; }
-  .pap .a { font-size: 13px; color: var(--text-3); }
-  .empty { font-size: 14px; color: var(--text-3); font-style: italic; margin-bottom: 8px; }
+h2{
+    font-size:20px;
+    font-weight:normal;
+    border-bottom:1px solid #ddd;
+    padding-bottom:4px;
+    margin-bottom:12px;
+}
 
-  /* ---------- contact ---------- */
-  .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-  .links a { font-size: 14px; color: var(--text-2); text-decoration: none; }
-  .links a:hover { color: var(--text); text-decoration: underline; }
+.article{
+    margin-bottom:18px;
+}
 
-  footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-4); }
+.date{
+    color:#666;
+    font-size:14px;
+}
 
-  @media (max-width: 560px) {
-    .aboutrow { flex-direction: column; }
-    .tlyr { width: 60px; }
-  }
-</style>
-</head>
-<body>
-<div class="site">
-
-  <div class="sitehead">
-    <div class="nm">Malik Olukotun</div>
-    <div class="rl">computer science @ OOU — mathematics, AI &amp; the brain</div>
-    <nav class="nav" id="nav">
-      <a href="#notes" data-s="notes" class="on">notes</a>
-      <a href="#about" data-s="about">about</a>
-      <a href="#timeline" data-s="timeline">timeline</a>
-      <a href="#projects" data-s="projects">projects</a>
-      <a href="#papers" data-s="papers">papers</a>
-      <a href="#contact" data-s="contact">contact</a>
-    </nav>
-  </div>
-
-  <div class="modes">
-    <div class="seg" role="tablist" aria-label="layout mode">
-      <button id="mNotes" class="on" onclick="setMode('notes')">notes first</button>
-      <button id="mAbout" onclick="setMode('about')">bio first</button>
-    </div>
-  </div>
-
-  <div class="wrap" id="wrap">
-
-    <!-- ================= NOTES (blog feed) =================
-         To add a post: copy a <article class="note">…</article> block,
-         newest first. Put the excerpt in the first .nbody and the full
-         text in the .more paragraph. -->
-    <section id="notes">
-      <h2 class="sec">what's new</h2>
-
-      <article class="note">
-        <div class="ndate">September 21, 2026 · expository</div>
-        <h3 class="ntitle"><a href="#notes">Deriving backpropagation by hand, then coding it</a></h3>
-        <p class="nbody">Most introductions to backpropagation gesture at the chain rule and then hand you <code>loss.backward()</code>. This note does the opposite: we compute the gradient of a tiny two-layer network symbolically, watch every partial derivative land where it should, and only then write a ~100-line autograd engine that reproduces them numerically.</p>
-        <p class="nbody more">The key realization is that backpropagation is not an algorithm for "training networks" — it is an algorithm for reusing intermediate results of the chain rule. Once you see the computational graph as the object the math is happening on, the engine writes itself: each node stores how to compute its local derivative, and a single reverse topological pass accumulates them. I end with a checklist of the three places beginners usually lose the factor ordering. <a href="https://dev.to/malikolukotun" target="_blank" rel="noopener">Full version on Dev.to →</a></p>
-        <div class="readrest"><button onclick="toggleNote(this)">Read the rest of this entry »</button></div>
-      </article>
-
-      <article class="note">
-        <div class="ndate">September 4, 2026 · mathematics</div>
-        <h3 class="ntitle"><a href="#notes">Linear algebra is the grammar of neural networks</a></h3>
-        <p class="nbody">A matrix multiplication is usually taught as a formula to memorize. It is better understood as the grammar of a sentence: <code>W x</code> says "measure x along the directions that matter to W." This note collects the four or five interpretations of a matrix that keep recurring across machine learning.</p>
-        <p class="nbody more">We walk through: (1) a matrix as a list of dot-product probes, (2) as a change of basis, (3) as a geometric transformation (rotate, stretch, shear), and (4) as a low-rank compression of a huge table of associations. The punchline for neural networks: training is nothing but nudging the grammar so that the sentences it produces score better. <a href="https://malikolukotun.substack.com" target="_blank" rel="noopener">Full version on Substack →</a></p>
-        <div class="readrest"><button onclick="toggleNote(this)">Read the rest of this entry »</button></div>
-      </article>
-
-      <article class="note">
-        <div class="ndate">August 18, 2026 · computation</div>
-        <h3 class="ntitle"><a href="#notes">What Turing actually proved (and what he didn't)</a></h3>
-        <p class="nbody">The halting problem is often summarized as "computers can't solve everything." True, but the shape of the proof matters more than the slogan: Turing showed that a single self-referential construction — feed a machine its own description — collapses any would-be decider. The same diagonal trick shows up in Gödel, Cantor, and Rice's theorem.</p>
+footer{
+    margin-top:60px;
+    color:#666;
+    font-size:14px;
+}
+</style></head><body><h1>Malik Olukotun</h1><div class="subtitle">
+Computer Science Undergraduate · Olabisi Onabanjo University
+</div><nav>
+<a href="#about">About</a>
+<a href="#writing">Writing</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav><section id="about">
+<h2>About</h2><p>
+I am a computer science undergraduate at Olabisi Onabanjo University (OOU).
+</p><p>
+This website serves as a public notebook for things I am learning in computer science, artificial intelligence, programming, mathematics for computing, and related fields.
+</p><p>
+My interests currently include machine learning, neural networks, algorithms, software engineering, and computer science education.
+</p><p>
+Most of the material here consists of notes, project logs, explanations, and reflections produced while studying.
+</p>
+</section><section id="writing">
+<h2>Writing</h2><p>
+Articles and notes will be added here as they are written.
+</p><div class="article">
+<div class="date">Coming soon</div>
+<div>Notes on neural networks</div>
+</div><div class="article">
+<div class="date">Coming soon</div>
+<div>Learning computer science from first principles</div>
+</div><div class="article">
+<div class="date">Coming soon</div>
+<div>Programming projects and implementation notes</div>
+</div>
+</section><section id="projects">
+<h2>Projects</h2><p>
+Selected projects and experiments.
+</p><ul>
+<li>
+<a href="https://github.com/malikolukotun">
+GitHub Profile
+</a>
+</li><li>
+Future programming projects will be listed here.
+</li>
+</ul>
+</section><section id="contact">
+<h2>Contact</h2><p>
+Email:
+<a href="mailto:hello.malikolukotun@gmail.com">
+hello.malikolukotun@gmail.com
+</a>
+</p><p>
+GitHub:
+<a href="https://github.com/malikolukotun">
+github.com/malikolukotun
+</a>
+</p><p>
+LinkedIn:
+<a href="https://www.linkedin.com/in/malik-olukotun-320562415">
+linkedin.com/in/malik-olukotun-320562415
+</a>
+</p>
+</section><footer>
+Last updated: October 2026
+</footer></body>
+</html>en summarized as "computers can't solve everything." True, but the shape of the proof matters more than the slogan: Turing showed that a single self-referential construction — feed a machine its own description — collapses any would-be decider. The same diagonal trick shows up in Gödel, Cantor, and Rice's theorem.</p>
         <p class="nbody more">This note traces the diagonal argument across all four results and argues they are one idea wearing different clothes. The payoff is practical: recognizing the pattern tells you immediately which questions about programs are hopeless in general, and where the escape hatches (decidable fragments, approximation, verification of restricted systems) actually live.</p>
         <div class="readrest"><button onclick="toggleNote(this)">Read the rest of this entry »</button></div>
       </article>
